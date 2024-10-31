@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/D1/Depi/new_project/Sentiment_Sifters/sentiment_sifters_project/mlruns/0/06d6fa115c8546118c04f5d4e1e7be22/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 06d6fa115c8546118c04f5d4e1e7be22
+run_name: Sentiment Analysis with Keywords and Summarization
+run_uuid: 06d6fa115c8546118c04f5d4e1e7be22
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729407562155
+status: 1
+tags: []
+user_id: komy2

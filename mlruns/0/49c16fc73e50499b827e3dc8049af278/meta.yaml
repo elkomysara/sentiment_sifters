@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/D1/Depi/new_project/Sentiment_Sifters/sentiment_sifters_project/mlruns/0/49c16fc73e50499b827e3dc8049af278/artifacts
+end_time: 1729374479023
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 49c16fc73e50499b827e3dc8049af278
+run_name: Sentiment Analysis Run
+run_uuid: 49c16fc73e50499b827e3dc8049af278
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1729370532894
+status: 3
+tags: []
+user_id: komy2

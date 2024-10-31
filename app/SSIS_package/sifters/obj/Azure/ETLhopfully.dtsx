@@ -1,0 +1,1814 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2024 8:40:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4U8DFLK"
+  DTS:CreatorName="DESKTOP-4U8DFLK\komy2"
+  DTS:DTSID="{1DFC39C6-6594-4AEF-81AD-4590BE9A2E64}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="ETLhopfully"
+  DTS:PackageType="5"
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{9E9F5790-8367-4C82-BA4A-A8CB95C93EC6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9629B5B2-72A8-432A-9752-4CAD5D07E127}"
+      DTS:ObjectName="DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-4U8DFLK;User ID=sifter_login;Initial Catalog=sentiment_warehouse;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-ETL-{9629B5B2-72A8-432A-9752-4CAD5D07E127}DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7pbU6tLi1kqioCttz68tLQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAUcJjihGOvwmHvWZoqBE71E8COOGVEDg6rQv5ZcdrgogAAAAAOgAAAAAIAACAAAAChhm0mfaFnHCF1I667CR/xBhUajuwbmYj/uvRCKzj1pSAAAACaEAUwObcGi1/lC1DeQR8sbpjSge4U2q0721YwaIeJkUAAAABad8RJVdkwL4PWGPYl7ZdGtSgvbHlMSctXr4NHVuQjKdPkPvgcAyUNdNcdYFJWfpVl7M9GgK30PxVX94jO34By</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\OLTP_to_OLP_DimentionTables"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D75B90FB-AF2C-4169-AED0-B03620FE2795}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OLTP_to_OLP_DimentionTables"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination DimDate"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].Columns[review_date]"
+                      cachedDataType="dbDate"
+                      cachedName="review_date"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[ReviewDate]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output].Columns[review_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[ReviewDate]"
+                      dataType="dbDate"
+                      name="ReviewDate" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[Weekday]"
+                      dataType="i4"
+                      name="Weekday" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input].ExternalColumns[IsWeekend]"
+                      dataType="bool"
+                      name="IsWeekend" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination DimKeyword"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimKeyword]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input].Columns[keyword]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="keyword"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input].ExternalColumns[Keyword]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output].Columns[keyword]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input].ExternalColumns[KeywordKey]"
+                      dataType="i4"
+                      name="KeywordKey" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input].ExternalColumns[Keyword]"
+                      dataType="wstr"
+                      length="255"
+                      name="Keyword" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination DimProduct"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].Columns[asin]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="asin"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[asin]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[asin]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="product_name"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_name]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].Columns[product_type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="product_type"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[product_type]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_type]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="20"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input].ExternalColumns[product_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="product_type" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination DimReviewer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimReviewer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].Columns[reviewer_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="reviewer_name"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[reviewer_name]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_name]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].Columns[reviewer_location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="reviewer_location"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[reviewer_location]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_location]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[region]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[ReviewerKey]"
+                      dataType="i4"
+                      name="ReviewerKey" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[reviewer_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="reviewer_name" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[reviewer_location]"
+                      dataType="wstr"
+                      length="255"
+                      name="reviewer_location" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="255"
+                      name="region" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination DimSentiment"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimSentiment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].Columns[sentiment_label]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sentiment_label"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentLabel]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_label]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].Columns[sentiment_summary]"
+                      cachedDataType="nText"
+                      cachedName="sentiment_summary"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentSummary]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_summary]" />
+                    <inputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].Columns[sentiment_score]"
+                      cachedDataType="numeric"
+                      cachedName="sentiment_score"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentScore]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_score]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentKey]"
+                      dataType="i4"
+                      name="SentimentKey" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentLabel]"
+                      dataType="wstr"
+                      length="50"
+                      name="SentimentLabel" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentSummary]"
+                      dataType="nText"
+                      name="SentimentSummary" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input].ExternalColumns[SentimentScore]"
+                      dataType="numeric"
+                      name="SentimentScore"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source DimDate"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT review_date FROM Review;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Connections[OleDbConnection]"
+                  connectionManagerID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_sifters.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output].Columns[review_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output].ExternalColumns[review_date]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output].Columns[review_date]"
+                      name="review_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output].ExternalColumns[review_date]"
+                      dataType="dbDate"
+                      name="review_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output].Columns[review_date]"
+                      dataType="dbDate"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output].Columns[review_date]"
+                      name="review_date" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source DimKeyword"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT keyword FROM Review ;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Connections[OleDbConnection]"
+                  connectionManagerID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_sifters.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output].Columns[keyword]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output].ExternalColumns[keyword]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output].Columns[keyword]"
+                      name="keyword"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output].ExternalColumns[keyword]"
+                      dataType="wstr"
+                      length="255"
+                      name="keyword" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output].Columns[keyword]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output].Columns[keyword]"
+                      name="keyword" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source DimProduct"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT product_id, asin, product_name, product_type FROM Product;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Connections[OleDbConnection]"
+                  connectionManagerID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_sifters.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[asin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[asin]"
+                      length="20"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[asin]"
+                      name="asin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_name]"
+                      name="product_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[product_type]"
+                      length="100"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].Columns[product_type]"
+                      name="product_type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="20"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output].ExternalColumns[product_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="product_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[asin]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[asin]"
+                      name="asin" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      name="product_name" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[product_type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[product_type]"
+                      name="product_type" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source DimReviewer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Reviewer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT reviewer_id, reviewer_name, reviewer_location, country, region FROM Reviewer;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Connections[OleDbConnection]"
+                  connectionManagerID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_sifters.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[reviewer_id]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_id]"
+                      name="reviewer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[reviewer_name]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_name]"
+                      name="reviewer_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[reviewer_location]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[reviewer_location]"
+                      name="reviewer_location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[reviewer_id]"
+                      dataType="i4"
+                      name="reviewer_id" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[reviewer_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="reviewer_name" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[reviewer_location]"
+                      dataType="wstr"
+                      length="255"
+                      name="reviewer_location" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="255"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="255"
+                      name="region" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[reviewer_id]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[reviewer_id]"
+                      name="reviewer_id" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[reviewer_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[reviewer_name]"
+                      name="reviewer_name" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[reviewer_location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[reviewer_location]"
+                      name="reviewer_location" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source DimSentiment"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT sentiment_label, sentiment_summary, sentiment_score FROM Review;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Connections[OleDbConnection]"
+                  connectionManagerID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_sifters.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_label]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].ExternalColumns[sentiment_label]"
+                      length="50"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_label]"
+                      name="sentiment_label"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_summary]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].ExternalColumns[sentiment_summary]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_summary]"
+                      name="sentiment_summary"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_score]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].ExternalColumns[sentiment_score]"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].Columns[sentiment_score]"
+                      name="sentiment_score"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].ExternalColumns[sentiment_label]"
+                      dataType="wstr"
+                      length="50"
+                      name="sentiment_label" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].ExternalColumns[sentiment_summary]"
+                      dataType="nText"
+                      name="sentiment_summary" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output].ExternalColumns[sentiment_score]"
+                      dataType="numeric"
+                      name="sentiment_score"
+                      precision="5"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[sentiment_label]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[sentiment_label]"
+                      name="sentiment_label" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[sentiment_summary]"
+                      dataType="nText"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[sentiment_summary]"
+                      name="sentiment_summary" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[sentiment_score]"
+                      dataType="numeric"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[sentiment_score]"
+                      name="sentiment_score"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output]"
+              endId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output1]"
+              endId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output2]"
+              endId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output3]"
+              endId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output4]"
+              endId="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables"
+          TopLeft="140.000000298024,54.2941175994681" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\OLTP_to_OLP_DimentionTables">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="240,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment"
+          TopLeft="308.67347004484,206.36638662778" />
+        <NodeLayout
+          Size="232.8,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword"
+          TopLeft="309.897959843365,146.388235330793" />
+        <NodeLayout
+          Size="212,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword"
+          TopLeft="43.3673470310933,149.342857190065" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct"
+          TopLeft="47.2448980597558,35.8319327417012" />
+        <NodeLayout
+          Size="235.2,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer"
+          TopLeft="307.244898613228,89.5899161550265" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate"
+          TopLeft="50.5102041891557,282.620167997612" />
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment"
+          TopLeft="36.0204082399434,209.423529317253" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate"
+          TopLeft="316.326531285621,275.302521110191" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer"
+          TopLeft="39.2857143693434,91.8773109328921" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct"
+          TopLeft="304.489796566546,32.5546218202041" />
+        <EdgeLayout
+          Id="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output4]"
+          TopLeft="244.110204189156,299.761344553902">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.2163270964654,0"
+              Start="0,0"
+              End="64.7163270964654,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.7163270964654,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="4.4744526107327,5,55.767421875,11.2431640625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output3]"
+          TopLeft="255.220408239943,228.694957972516">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.453061804897,0"
+              Start="0,0"
+              End="45.953061804897,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="45.953061804897,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.90718003505149,5,55.767421875,11.2431640625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output2]"
+          TopLeft="255.367347031093,168.665546260429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.5306128122719,0"
+              Start="0,0"
+              End="47.0306128122719,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.0306128122719,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.36840453136406,5,55.767421875,11.2431640625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output1]"
+          TopLeft="253.685714369343,111.533613543959">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="53.5591842438843,0"
+              Start="0,0"
+              End="46.0591842438843,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.0591842438843,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-4.96398209680788,5,55.9871484375,11.228515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLP_DimentionTables.Paths[OLE DB Source Output]"
+          TopLeft="254.444898059756,54.9932772809526">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.0448985067906,0"
+              Start="0,0"
+              End="42.5448985067906,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.5448985067906,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-6.55266793410468,5,55.650234375,11.2431640625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimSentiment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimKeyword">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimKeyword">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimProduct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimReviewer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimDate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimSentiment">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimDate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Source DimReviewer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLP_DimentionTables\OLE DB Destination DimProduct">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

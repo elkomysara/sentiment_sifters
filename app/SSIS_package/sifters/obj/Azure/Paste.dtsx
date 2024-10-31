@@ -1,0 +1,1814 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2024 11:16:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4U8DFLK"
+  DTS:CreatorName="DESKTOP-4U8DFLK\komy2"
+  DTS:DTSID="{3ECAF933-5D52-4BF3-80BB-DD561877F1B2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Paste"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{18ED5B8C-F4E3-41B9-9D0F-8949C64116DD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\OLTP_to_OLAP"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{776C1452-C0B6-4A74-A6CE-6BACA415E65D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OLTP_to_OLAP"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\OLTP_to_OLAP\Lookup_DimDate"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DimDate"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimDate]) [refTable]
+where [refTable].[ReviewDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DateKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ReviewDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Year" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Quarter" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Month" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Day" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Weekday" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="IsWeekend" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_date]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\Lookup_DimDate.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLAP\Lookup_DimDate.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Inputs[Lookup Input].Columns[ReviewDate]"
+                      cachedDataType="dbDate"
+                      cachedName="review_date"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_date]"
+                      name="ReviewDate"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ReviewDate</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ReviewDate</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Year</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Quarter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Quarter</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Month</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Day</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Weekday]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[Weekday]"
+                      name="Weekday"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Weekday</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[IsWeekend]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Match Output].Columns[IsWeekend]"
+                      name="IsWeekend"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">IsWeekend</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimDate.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimDate.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLAP\Lookup_DimKeyword"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DimKeyword"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimKeyword]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimKeyword]) [refTable]
+where [refTable].[Keyword] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="KeywordKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Keyword" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[keyword]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Inputs[Lookup Input].Columns[Keyword]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="keyword"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[keyword]"
+                      name="Keyword"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Keyword</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Keyword</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLAP\Lookup_DimProduct"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DimProduct"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimProduct]) [refTable]
+where [refTable].[ProductKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="asin" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="product_name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="product_type" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[product_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Inputs[Lookup Input].Columns[product_id]"
+                      cachedDataType="i4"
+                      cachedName="product_id"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[product_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProductKey</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimProduct.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Match Output].Columns[ProductKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Match Output].Columns[ProductKey]"
+                      name="ProductKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProductKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimProduct.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimProduct.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLAP\Lookup_DimReviewer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DimReviewer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimReviewer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimReviewer]) [refTable]
+where [refTable].[ReviewerKey] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ReviewerKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="reviewer_name" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="reviewer_location" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[reviewer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Inputs[Lookup Input].Columns[ReviewerKey]"
+                      cachedDataType="i4"
+                      cachedName="reviewer_id"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[reviewer_id]"
+                      name="ReviewerKey"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ReviewerKey</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ReviewerKey</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLAP\Lookup_DimSentiment"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DimSentiment"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[DimSentiment]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[DimSentiment]) [refTable]
+where [refTable].[SentimentLabel] = ? and [refTable].[SentimentScore] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="SentimentKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SentimentLabel" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SentimentSummary" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SentimentScore" dataType="DT_NUMERIC" length="0" precision="5" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_label]};#{Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_score]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input].Columns[SentimentLabel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sentiment_label"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_label]"
+                      name="SentimentLabel"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SentimentLabel</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SentimentLabel</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input].Columns[SentimentScore]"
+                      cachedDataType="numeric"
+                      cachedName="sentiment_score"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_score]"
+                      name="SentimentScore"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">SentimentScore</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SentimentScore</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input].Columns[SentimentSummary]"
+                      cachedDataType="nText"
+                      cachedName="sentiment_summary"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_summary]"
+                      name="SentimentSummary"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn" />
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SentimentSummary</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLAP\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[asin]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="asin"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[asin]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[asin]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="20"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_type]"
+                      dataType="wstr"
+                      length="100"
+                      name="product_type" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source_OLTP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Review]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT review_id, asin, reviewer_id, sentiment_label, sentiment_score, 
+       review_date, helpful_votes, total_votes, rating, review_title, review_text 
+FROM Review;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Connections[OleDbConnection]"
+                  connectionManagerID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_sifters.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[asin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[asin]"
+                      length="20"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[asin]"
+                      name="asin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[reviewer_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[reviewer_id]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[reviewer_id]"
+                      name="reviewer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_label]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[sentiment_label]"
+                      length="50"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_label]"
+                      name="sentiment_label"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_score]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[sentiment_score]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_score]"
+                      name="sentiment_score"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_date]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_date]"
+                      name="review_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[helpful_votes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[helpful_votes]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[helpful_votes]"
+                      name="helpful_votes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[total_votes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[total_votes]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[total_votes]"
+                      name="total_votes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[rating]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[rating]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[rating]"
+                      name="rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_title]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_title]"
+                      name="review_title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_text]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_text]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_text]"
+                      name="review_text"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_id]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[review_id]"
+                      name="review_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[helpful_ratio]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[helpful_ratio]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[helpful_ratio]"
+                      name="helpful_ratio"
+                      precision="16"
+                      scale="13"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_summary]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[sentiment_summary]"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[sentiment_summary]"
+                      name="sentiment_summary"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[keyword]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[keyword]"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].Columns[keyword]"
+                      name="keyword"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[asin]"
+                      dataType="wstr"
+                      length="20"
+                      name="asin" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[reviewer_id]"
+                      dataType="i4"
+                      name="reviewer_id" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[sentiment_label]"
+                      dataType="wstr"
+                      length="50"
+                      name="sentiment_label" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[sentiment_score]"
+                      dataType="numeric"
+                      name="sentiment_score"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_date]"
+                      dataType="dbDate"
+                      name="review_date" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[helpful_votes]"
+                      dataType="i4"
+                      name="helpful_votes" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[total_votes]"
+                      dataType="i4"
+                      name="total_votes" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[rating]"
+                      dataType="i4"
+                      name="rating" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="review_title" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_text]"
+                      dataType="nText"
+                      name="review_text" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[review_id]"
+                      dataType="i4"
+                      name="review_id" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[helpful_ratio]"
+                      dataType="numeric"
+                      name="helpful_ratio"
+                      precision="16"
+                      scale="13" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[sentiment_summary]"
+                      dataType="nText"
+                      name="sentiment_summary" />
+                    <externalMetadataColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output].ExternalColumns[keyword]"
+                      dataType="wstr"
+                      length="255"
+                      name="keyword" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_id]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_id]"
+                      name="review_id" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[asin]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[asin]"
+                      name="asin" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[reviewer_id]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[reviewer_id]"
+                      name="reviewer_id" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[sentiment_label]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[sentiment_label]"
+                      name="sentiment_label" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[sentiment_score]"
+                      dataType="numeric"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[sentiment_score]"
+                      name="sentiment_score"
+                      precision="5"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_date]"
+                      dataType="dbDate"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_date]"
+                      name="review_date" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[helpful_votes]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[helpful_votes]"
+                      name="helpful_votes" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[total_votes]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[total_votes]"
+                      name="total_votes" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[rating]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[rating]"
+                      name="rating" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[helpful_ratio]"
+                      dataType="numeric"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[helpful_ratio]"
+                      name="helpful_ratio"
+                      precision="16"
+                      scale="13" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_title]"
+                      name="review_title" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[sentiment_summary]"
+                      dataType="nText"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[sentiment_summary]"
+                      name="sentiment_summary" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_text]"
+                      dataType="nText"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[review_text]"
+                      name="review_text" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[keyword]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[keyword]"
+                      name="keyword" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\OLTP_to_OLAP.Paths[Lookup No Match Output]"
+              endId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Inputs[Lookup Input]"
+              name="Lookup No Match Output"
+              startId="Package\OLTP_to_OLAP\Lookup_DimProduct.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\OLTP_to_OLAP.Paths[Lookup No Match Output1]"
+              endId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Inputs[Lookup Input]"
+              name="Lookup No Match Output"
+              startId="Package\OLTP_to_OLAP\Lookup_DimReviewer.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\OLTP_to_OLAP.Paths[Lookup No Match Output2]"
+              endId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Inputs[Lookup Input]"
+              name="Lookup No Match Output"
+              startId="Package\OLTP_to_OLAP\Lookup_DimDate.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\OLTP_to_OLAP.Paths[Lookup No Match Output3]"
+              endId="Package\OLTP_to_OLAP\Lookup_DimDate.Inputs[Lookup Input]"
+              name="Lookup No Match Output"
+              startId="Package\OLTP_to_OLAP\Lookup_DimKeyword.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\OLTP_to_OLAP.Paths[Lookup No Match Output4]"
+              endId="Package\OLTP_to_OLAP\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\OLTP_to_OLAP\Lookup_DimSentiment.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\OLTP_to_OLAP.Paths[OLE DB Source Output]"
+              endId="Package\OLTP_to_OLAP\Lookup_DimProduct.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\OLTP_to_OLAP\OLE DB Source_OLTP.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\OLTP_to_OLAP"
+          TopLeft="40.7142858009558,62.705882297977" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\OLTP_to_OLAP">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\OLTP_to_OLAP\OLE DB Source_OLTP"
+          TopLeft="14.2857143161249,58.8823528895637" />
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\OLTP_to_OLAP\Lookup_DimProduct"
+          TopLeft="210.000000447035,61.9411764162944" />
+        <EdgeLayout
+          Id="Package\OLTP_to_OLAP.Paths[OLE DB Source Output]"
+          TopLeft="104.285714316125,58.8823528895637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="192.11428613091,3.05882352673061"
+              Start="0,0"
+              End="192.11428613091,-4.44117647326939">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="188.11428613091,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="188.11428613091,-22.5"
+                    Point2="192.11428613091,-22.5"
+                    Point3="192.11428613091,-18.5" />
+                  <mssgle:LineSegment
+                    End="192.11428613091,-4.44117647326939" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\OLTP_to_OLAP\Lookup_DimReviewer"
+          TopLeft="445.000000947288,64.1294117975503" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\OLTP_to_OLAP\Lookup_DimSentiment"
+          TopLeft="9.28571430548098,142.023529465388" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\OLTP_to_OLAP\Lookup_DimDate"
+          TopLeft="212.85714331026,139.07058820245" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\OLTP_to_OLAP\Lookup_DimKeyword"
+          TopLeft="446.428572378901,137.435294175292" />
+        <EdgeLayout
+          Id="Package\OLTP_to_OLAP.Paths[Lookup No Match Output]"
+          TopLeft="382.800000447035,76.3411764162944">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.2000005002534,0"
+              Start="0,0"
+              End="54.7000005002534,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="54.7000005002534,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-28.4563864686233,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLAP.Paths[Lookup No Match Output1]"
+          TopLeft="535.114286663095,105.72941179755">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.7058823777421"
+              Start="0,0"
+              End="0,24.2058823777421">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.2058823777421" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,6.29825368887103,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLAP.Paths[Lookup No Match Output2]"
+          TopLeft="292.45714331026,139.07058820245">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-190.771429004779,2.95294126293842"
+              Start="0,0"
+              End="-190.771429004779,-4.54705873706158">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="-4,-22.5" />
+                  <mssgle:LineSegment
+                    End="-186.771429004779,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-186.771429004779,-22.5"
+                    Point2="-190.771429004779,-22.5"
+                    Point3="-190.771429004779,-18.5" />
+                  <mssgle:LineSegment
+                    End="-190.771429004779,-4.54705873706158" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-151.192101221139,-17.5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\OLTP_to_OLAP.Paths[Lookup No Match Output3]"
+          TopLeft="446.428572378901,159.052941188871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-74.3714290686411,0"
+              Start="0,0"
+              End="-66.8714290686411,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-66.8714290686411,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-89.2421012530706,5,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\OLTP_to_OLAP\OLE DB Destination"
+          TopLeft="9.28571430548098,243.623529465388" />
+        <EdgeLayout
+          Id="Package\OLTP_to_OLAP.Paths[Lookup No Match Output4]"
+          TopLeft="98.085714305481,183.623529465388">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,20.4453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\OLE DB Source_OLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\Lookup_DimProduct">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimProduct]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\Lookup_DimReviewer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimReviewer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\Lookup_DimSentiment">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimSentiment]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\Lookup_DimDate">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\Lookup_DimKeyword">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimKeyword]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\OLTP_to_OLAP\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

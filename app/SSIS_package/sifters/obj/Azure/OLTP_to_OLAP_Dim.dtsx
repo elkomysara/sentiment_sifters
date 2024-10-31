@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2024 8:40:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4U8DFLK"
+  DTS:CreatorName="DESKTOP-4U8DFLK\komy2"
+  DTS:DTSID="{6E18A436-3599-4248-B319-35E08255E991}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="OLTP_to_OLAP_Dim"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{26F0139F-C3C8-4501-9157-38127FA6CE25}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9629B5B2-72A8-432A-9752-4CAD5D07E127}"
+      DTS:ObjectName="DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-4U8DFLK;User ID=sifter_login;Initial Catalog=sentiment_warehouse;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-ETL-{9629B5B2-72A8-432A-9752-4CAD5D07E127}DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7pbU6tLi1kqioCttz68tLQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAAFzvB6SRJZ+ay1FfLw8fo232qntlrnX5qaYyOoAQFMJAAAAAAOgAAAAAIAACAAAACo06a88AJylYyu+JFCLVP1Ejx0ZJEm32/tPxveL1fUtyAAAADKzoQ6QzxNefl5I2ZO0v8iFJzchlIBRnXWUIQsWAScMkAAAAD4j+eLoLG+0mpY/OG8VaYewaKi2sQgNsWDaUqaz1n6oDql0uGvdJugRmVHuaClo9lzxCmiheyiiGdgDT9qJYpB</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables />
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

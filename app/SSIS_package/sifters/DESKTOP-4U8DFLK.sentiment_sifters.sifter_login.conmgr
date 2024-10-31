@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-4U8DFLK.sentiment_sifters.sifter_login"
+  DTS:DTSID="{8E16381E-B467-4C1B-8842-FF6EA15504C9}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=DESKTOP-4U8DFLK;User ID=sifter_login;Initial Catalog=sentiment_sifters;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-sifters-{8E16381E-B467-4C1B-8842-FF6EA15504C9}DESKTOP-4U8DFLK.sentiment_sifters.sifter_login;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7pbU6tLi1kqioCttz68tLQAAAAACAAAAAAAQZgAAAAEAACAAAAAKwvQLInmHjShBLMP2NCQsw7j27pdkfbaWtjyf4lpHzwAAAAAOgAAAAAIAACAAAAAWSwRMZGJK77CdoTil0nhb6bNjr8uYKoTHxYBNncGxf4AAAACCOgwTrmx6+I9eP3QThZ8DgUQoEx8NDy7yhVZPMdvYLjv4mQPHWGXhteFKHhkBDZo0o34NfGl7ZM2bfEGluBoaVK3PTuXcyh5jTekj7RbXxGMpzR+SC7/mGgCBszvHvSEKXOEEgENSRfWhSZiGe6ElnV7R6UaeiAo8oIrK4ctmH0AAAAAw5xK2/Hiv0s3dV7y/FRqpsybe7CssQdUe4zFsF26gjxodqlMz3umZJup/MgY5k1vlwa9FW9lxVFHepNY1tlj4</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

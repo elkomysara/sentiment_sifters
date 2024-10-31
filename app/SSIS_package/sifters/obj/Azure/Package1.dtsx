@@ -1,0 +1,895 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/21/2024 11:24:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-4U8DFLK"
+  DTS:CreatorName="DESKTOP-4U8DFLK\komy2"
+  DTS:DTSID="{C1FC1D51-A14B-45AE-A4D8-B3E1334D0800}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{776115C6-8914-42E7-B7F6-B06339D6BC21}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FillUpDimDate"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{65dfec8d-ad24-4ab9-90aa-cde1f51095de}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FillUpDimDate"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\FillUpDimDate\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[ReviewDate]"
+                      cachedDataType="dbDate"
+                      cachedName="ReviewDate"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Year]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[YEAR](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">YEAR(ReviewDate)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[Quarter]"
+                      cachedDataType="i4"
+                      cachedName="Quarter"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([MONTH](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) - 1) / 3 + 1</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(MONTH(ReviewDate) - 1) / 3 + 1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Month]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[MONTH](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">MONTH(ReviewDate)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[Day]"
+                      cachedDataType="i4"
+                      cachedName="Day"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Day]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY(ReviewDate)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[Weekday]"
+                      cachedDataType="i4"
+                      cachedName="Weekday"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Weekday]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEPART]("dw",#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEPART("dw",ReviewDate)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[IsWeekend]"
+                      cachedDataType="bool"
+                      cachedName="IsWeekend"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsWeekend]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([DATEPART]("dw",#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 1 || [DATEPART]("dw",#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 7) ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DATEPART("dw",ReviewDate) == 1 || DATEPART("dw",ReviewDate) == 7) ? 1 : 0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[IsHoliday]"
+                      cachedDataType="bool"
+                      cachedName="IsHoliday"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsHoliday]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([MONTH](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 1 &amp;&amp; [DAY](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 1) || ([MONTH](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 12 &amp;&amp; [DAY](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 25) ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(MONTH(ReviewDate) == 1 &amp;&amp; DAY(ReviewDate) == 1) || (MONTH(ReviewDate) == 12 &amp;&amp; DAY(ReviewDate) == 25) ? 1 : 0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[IsBlackFriday]"
+                      cachedDataType="bool"
+                      cachedName="IsBlackFriday"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsBlackFriday]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([MONTH](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 11 &amp;&amp; [DATEPART]("dw",#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 6 &amp;&amp; [DAY](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) &gt;= 23 &amp;&amp; [DAY](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) &lt;= 29) ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(MONTH(ReviewDate) == 11 &amp;&amp; DATEPART("dw",ReviewDate) == 6 &amp;&amp; DAY(ReviewDate) &gt;= 23 &amp;&amp; DAY(ReviewDate) &lt;= 29) ? 1 : 0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input].Columns[IsChristmas]"
+                      cachedDataType="bool"
+                      cachedName="IsChristmas"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsChristmas]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([MONTH](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 12 &amp;&amp; [DAY](#{Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]}) == 25) ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(MONTH(ReviewDate) == 12 &amp;&amp; DAY(ReviewDate) == 25) ? 1 : 0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FillUpDimDate\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FillUpDimDate\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ReviewDate]"
+                      cachedDataType="dbDate"
+                      cachedName="ReviewDate"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewDate]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="i4"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quarter]"
+                      cachedDataType="i4"
+                      cachedName="Quarter"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Quarter]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedDataType="i4"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Day]"
+                      cachedDataType="i4"
+                      cachedName="Day"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Day]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Weekday]"
+                      cachedDataType="i4"
+                      cachedName="Weekday"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekday]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Weekday]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsWeekend]"
+                      cachedDataType="bool"
+                      cachedName="IsWeekend"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWeekend]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsWeekend]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsHoliday]"
+                      cachedDataType="bool"
+                      cachedName="IsHoliday"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsHoliday]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsHoliday]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsBlackFriday]"
+                      cachedDataType="bool"
+                      cachedName="IsBlackFriday"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsBlackFriday]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsBlackFriday]" />
+                    <inputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsChristmas]"
+                      cachedDataType="bool"
+                      cachedName="IsChristmas"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsChristmas]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsChristmas]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ReviewDate]"
+                      dataType="dbDate"
+                      name="ReviewDate" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekday]"
+                      dataType="i4"
+                      name="Weekday" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsWeekend]"
+                      dataType="bool"
+                      name="IsWeekend" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsHoliday]"
+                      dataType="bool"
+                      name="IsHoliday" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsBlackFriday]"
+                      dataType="bool"
+                      name="IsBlackFriday" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsChristmas]"
+                      dataType="bool"
+                      name="IsChristmas" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FillUpDimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FillUpDimDate\OLE DB Source DimDate 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source DimDate 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimDate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT review_date FROM Review;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Connections[OleDbConnection]"
+                  connectionManagerID="{CE205500-CD57-45A7-909C-02DEA6FD7F0E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-4U8DFLK.sentiment_warehouse.sifter_login]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[ReviewDate]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[ReviewDate]"
+                      name="ReviewDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Month]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Day]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Day]"
+                      name="Day"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Weekday]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Weekday]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[Weekday]"
+                      name="Weekday"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsWeekend]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsWeekend]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsWeekend]"
+                      name="IsWeekend"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsHoliday]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsHoliday]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsHoliday]"
+                      name="IsHoliday"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsBlackFriday]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsBlackFriday]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsBlackFriday]"
+                      name="IsBlackFriday"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsChristmas]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsChristmas]"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].Columns[IsChristmas]"
+                      name="IsChristmas"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[DateKey]"
+                      dataType="i4"
+                      name="DateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[ReviewDate]"
+                      dataType="dbDate"
+                      name="ReviewDate" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Quarter]"
+                      dataType="i4"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      dataType="i4"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Day]"
+                      dataType="i4"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[Weekday]"
+                      dataType="i4"
+                      name="Weekday" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsWeekend]"
+                      dataType="bool"
+                      name="IsWeekend" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsHoliday]"
+                      dataType="bool"
+                      name="IsHoliday" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsBlackFriday]"
+                      dataType="bool"
+                      name="IsBlackFriday" />
+                    <externalMetadataColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output].ExternalColumns[IsChristmas]"
+                      dataType="bool"
+                      name="IsChristmas" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[DateKey]"
+                      name="DateKey" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[ReviewDate]"
+                      dataType="dbDate"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[ReviewDate]"
+                      name="ReviewDate" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Quarter]"
+                      name="Quarter" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Day]"
+                      name="Day" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Weekday]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[Weekday]"
+                      name="Weekday" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsWeekend]"
+                      dataType="bool"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsWeekend]"
+                      name="IsWeekend" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsHoliday]"
+                      dataType="bool"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsHoliday]"
+                      name="IsHoliday" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsBlackFriday]"
+                      dataType="bool"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsBlackFriday]"
+                      name="IsBlackFriday" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsChristmas]"
+                      dataType="bool"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[IsChristmas]"
+                      name="IsChristmas" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FillUpDimDate.Paths[Derived Column Output]"
+              endId="Package\FillUpDimDate\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\FillUpDimDate\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\FillUpDimDate.Paths[OLE DB Source Output]"
+              endId="Package\FillUpDimDate\Derived Column.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\FillUpDimDate\OLE DB Source DimDate 1.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\FillUpDimDate"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FillUpDimDate">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\FillUpDimDate\OLE DB Destination"
+          TopLeft="589.999991208315,57.9999991357327" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\FillUpDimDate\OLE DB Source DimDate 1"
+          TopLeft="60,61.0924369738323" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\FillUpDimDate\Derived Column"
+          TopLeft="392.653061932621,60" />
+        <EdgeLayout
+          Id="Package\FillUpDimDate.Paths[Derived Column Output]"
+          TopLeft="545.453061932621,79.7999995678663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.546929275694,0"
+              Start="0,0"
+              End="37.046929275694,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="37.046929275694,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FillUpDimDate.Paths[OLE DB Source Output]"
+          TopLeft="262.4,81.3462184869162">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="130.253061932621,0"
+              Start="0,0"
+              End="122.753061932621,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="122.753061932621,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
