@@ -1,0 +1,50 @@
+# Core Python packages
+numpy==1.26.4               # Numerical computations
+pandas==2.2.2               # Data manipulation
+scikit-learn==1.4.2         # Machine learning tools
+scipy==1.13.0               # Scientific computations
+seaborn==0.13.2             # Statistical data visualization
+matplotlib==3.8.4           # Plotting library
+
+# Web app and dashboard
+streamlit==1.39.0           # Web app framework for data science
+
+# Database connections
+sqlalchemy==2.0.31          # SQL toolkit and ORM
+pyodbc==5.1.0               # ODBC for SQL database connections
+ipython-sql==0.5.0          # For SQL querying within IPython/Jupyter
+
+# NLP and sentiment analysis (optional, based on project needs)
+textblob==0.18.0.post0      # Simplified Text Processing
+nltk==3.8.1                 # Natural language toolkit
+
+# Cloud and API integration (for accessing Azure or Google APIs if needed)
+google-auth==2.35.0         # Authentication for Google services
+requests==2.32.3            # HTTP requests
+
+# Data serialization and file handling
+openpyxl==3.1.2             # Reading/writing Excel files
+xlsxwriter==3.2.0           # Excel writer with more features
+
+# Visualization and Plotting
+plotly==5.23.0              # Interactive visualizations
+altair==5.4.1               # Declarative visualization library
+
+# ML and MLOps tools
+mlflow==2.17.0              # Tracking and managing ML experiments
+
+# Utility packages
+joblib==1.4.0               # For model saving/loading
+typing-extensions==4.11.0   # Typing enhancements for Python
+
+# Dependencies for Streamlit and Flask (if you're using Flask as well)
+flask==3.0.3                # Web framework, if needed alongside Streamlit
+jinja2==3.1.4               # Templating engine
+werkzeug==3.0.3             # WSGI utility library for Flask
+
+# Environment and configuration
+python-dateutil==2.9.0      # Date parsing
+pytz==2024.1                # Timezone handling
+
+# For GitHub integration and CI/CD, if needed
+gitpython==3.1.43           # Git operations
